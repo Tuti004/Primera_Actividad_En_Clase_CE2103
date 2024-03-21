@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Random;
 public class lineal_logaritmico {
     public static void mergeSort(int[] arr) {
@@ -38,7 +37,7 @@ public class lineal_logaritmico {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
 
-        int n = 100000; // Number of elements in the array
+        int n = 10; // Number of elements in the array
         int[] arr = new int[n];
         Random random = new Random();
         for (int i = 0; i < n; i++) {
