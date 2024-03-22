@@ -1,20 +1,31 @@
+import java.util.Random;
+
 public class complejidad_lineal {
+    public static void buscar(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] *= 2;
+        }
+    }
+
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
+        int tamanoArray = 100000; // Tamaño específico del array
+        int[] miArray = new int[tamanoArray]; // Crear un array del tamaño especificado
 
-        int n = 20; // Tamaño de la matriz
-        int[][] matriz = new int[n][n]; // Creamos una matriz de tamaño n x n
+        Random rand = new Random();
 
-        // Llenamos la matriz con valores
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                matriz[i][j] = i * n + j + 1; // Valores del 1 al n^2
-            }
+        // Llenar el array con números aleatorios
+        for (int i = 0; i < tamanoArray; i++) {
+            miArray[i] = rand.nextInt(100); // Genera un número aleatorio entre 0 y 99
         }
 
-        long endTime = System.nanoTime();
-        long durationSeconds = (endTime - startTime);
+        long startTime = System.nanoTime(); // Tiempo inicial
 
-        System.out.println("Time taken: " + durationSeconds + " nanoseconds");
+        // Llamar a la función buscar
+        buscar(miArray);
+
+        long endTime = System.nanoTime(); // Tiempo final
+
+        long tiempoDeEjecucion = endTime - startTime;
+        System.out.println("Tiempo de ejecución: " + tiempoDeEjecucion + " nanosegundos");
     }
 }
