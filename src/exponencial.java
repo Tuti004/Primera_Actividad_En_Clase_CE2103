@@ -1,22 +1,40 @@
+import java.util.Random;
+
 public class exponencial {
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
+        // Generar un arreglo de 10 elementos aleatorios
+        int[] array = generateRandomArray(100000);
 
-        int n = 30; // The index of the Fibonacci number to calculate
-        System.out.println(fibonacci(n));
+        long startTime = System.nanoTime(); // Registro de tiempo inicial
 
-        long endTime = System.nanoTime();
-        long durationSeconds = (endTime - startTime);
+        // Calcular la potencia exponencial de cada elemento
+        for (int i = 0; i < array.length; i++) {
+            int base = array[i];
+            int exponent = 2; // Exponente, puedes cambiarlo según necesites
+            exponential(base, exponent);
+        }
 
-        System.out.println("Time taken: " + durationSeconds + " nanoseconds");
+        long endTime = System.nanoTime(); // Registro de tiempo final
+        long duration = endTime - startTime; // Calcular duración en nano segundos
+        System.out.println("Tiempo de ejecución: " + duration + " nanosegundos");
     }
 
-    public static int fibonacci(int n) {
-        if (n <= 1) {
-            return n;
-        } else {
-            return fibonacci(n - 1) + fibonacci(n - 2);
+    // Función para generar un arreglo de tamaño "size" con números aleatorios entre 1 y 10
+    public static int[] generateRandomArray(int size) {
+        int[] array = new int[size];
+        Random random = new Random();
+        for (int i = 0; i < size; i++) {
+            array[i] = random.nextInt(10) + 1; // Números aleatorios entre 1 y 10
         }
+        return array;
+    }
+
+    // Función recursiva para calcular la potencia
+    public static long exponential(int base, int exponent) {
+        if (exponent == 0)
+            return 1;
+        else
+            return base * exponential(base, exponent - 1);
     }
 }
